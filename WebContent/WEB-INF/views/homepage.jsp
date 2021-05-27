@@ -70,37 +70,44 @@
 		<div class="content">
 			
 			<!-- Loading the home content -->
+			
 			<c:if test="${userClickHome == true }">
 				<%@include file="home.jsp"%>
 			</c:if>
 
 			<!-- Load only when user clicks about -->
+			
 			<c:if test="${userClickAbout == true }">
 				<%@include file="about.jsp"%>
 			</c:if>
 
 			<!-- Load only when user clicks contact -->
+			
 			<c:if test="${userClickContact == true }">
 				<%@include file="contact.jsp"%>
 			</c:if>
 			
 			<!-- Load only when user clicks contact -->
+			
 			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
 				<%@include file="listProducts.jsp"%>
 			</c:if>	
 			
 			
 			<!-- Load only when user clicks show product -->
+			
 			<c:if test="${userClickShowProduct == true}">
 				<%@include file="singleProduct.jsp"%>
 			</c:if>								
 
 			<!-- Load only when user clicks manage product -->
+			
 			<c:if test="${userClickManageProduct == true}">
 				<%@include file="manageProduct.jsp"%>
 			</c:if>	
 
 			<!-- Load only when user clicks manage product -->
+			
 			<c:if test="${userClickShowCart == true}">
 				<%@include file="cart.jsp"%>
 			</c:if>	
