@@ -6,7 +6,16 @@ import com.srj.onlineshopping.model.Category;
 
 public interface CategoryService {
 
+	boolean add(Category category);
+	
+	Category get(Long id);
+	
 	List<Category> list();
 
-	Category get(int id);
+	boolean update(Category category);
+	
+	boolean delete(Category category);
+	
+	
+	
 }

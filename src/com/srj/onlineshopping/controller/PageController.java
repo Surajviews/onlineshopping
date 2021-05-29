@@ -7,13 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.srj.onlineshopping.model.Category;
+import com.srj.onlineshopping.model.Product;
 import com.srj.onlineshopping.service.CategoryService;
+import com.srj.onlineshopping.service.ProductService;
 
 @Controller
 public class PageController {
 
 	@Autowired
 	private CategoryService categoryService;
+	
+	@Autowired
+	private ProductService productService;
+	
+	Category category;
+	Product product;
 	
 	@RequestMapping(value={"/", "/home"})
 	public ModelAndView home(){
@@ -42,6 +50,7 @@ public class PageController {
 		ModelAndView mv=new ModelAndView("homepage");
 		mv.addObject("title", "Contact Us");
 	 mv.addObject("userClickContact", true);
+		
 		return mv;
 	}
 	
@@ -60,7 +69,7 @@ public class PageController {
 	}
 	
 	@RequestMapping(value = "/show/category/{id}/products")
-	public ModelAndView showCategoryProducts(@PathVariable("id") int id){
+	public ModelAndView showCategoryProducts(@PathVariable("id") Long id){
 		ModelAndView mv=new ModelAndView("homepage");
 		
 		//categoryDAO to fetch single category
@@ -78,5 +87,25 @@ public class PageController {
 		mv.addObject("userClickCategoryProducts",true);
 		return mv;
 	}
+	
+	/*@RequestMapping(value="/test")
+	public ModelAndView test(){
+		
+		 product=new Product();
+		product.setActive(true);
+		product.setBrand("TATA");
+		product.setCategoryId(11L);
+		product.setDescription("here is product description");
+		product.setName("TATA Product");
+		
+		productService.add(product);
+		
+		ModelAndView mv=new ModelAndView("homepage");
+		
+	 mv.addObject("tested", product);
+		
+		return mv;
+	}
+	*/
 	  
 }
