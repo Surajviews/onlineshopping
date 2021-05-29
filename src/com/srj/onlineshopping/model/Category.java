@@ -12,7 +12,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "category_id")
-	private Long id;
+	private int id;
 	
 	@Column(name = "name")
 	private String name;
@@ -26,11 +26,11 @@ public class Category {
 	@Column(name = "is_active", columnDefinition = "boolean default true")
 	private boolean active=true;
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -72,6 +72,7 @@ public class Category {
 				+ ", active=" + active + "]";
 	}
 
+	
 	
 
 	

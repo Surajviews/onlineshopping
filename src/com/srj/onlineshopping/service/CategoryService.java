@@ -8,7 +8,7 @@ public interface CategoryService {
 
 	boolean add(Category category);
 	
-	Category get(Long id);
+	Category get(int id);
 	
 	List<Category> list();
 

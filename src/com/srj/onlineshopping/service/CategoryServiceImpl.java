@@ -23,7 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category get(Long id) {
+	public Category get(int id) {
 		// TODO Auto-generated method stub
 		return categoryRepository.get(id);
 	}

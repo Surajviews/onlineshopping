@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
 	ProductRepository productRepository;
 	
 	@Override
-	public Product get(Long productId) {
+	public Product get(int productId) {
 		// TODO Auto-generated method stub
 		return productRepository.get(productId);
 	}
@@ -53,13 +53,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<Product> listActiveProductByCategory(Long categoryId) {
+	public List<Product> listActiveProductByCategory(int id) {
 		// TODO Auto-generated method stub
-		return productRepository.listActiveProductByCategory(categoryId);
+		return productRepository.listActiveProductByCategory(id);
 	}
 
 	@Override
-	public List<Product> getLetestActiveProducts(Long count) {
+	public List<Product> getLetestActiveProducts(int count) {
 		// TODO Auto-generated method stub
 		return productRepository.getLetestActiveProducts(count);
 	}

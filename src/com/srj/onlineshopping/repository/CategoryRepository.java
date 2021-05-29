@@ -10,7 +10,7 @@ public interface CategoryRepository {
 
 	List<Category> list();
 	
-	Category get(Long id);
+	Category get(int id);
 
 boolean update(Category category);
 	

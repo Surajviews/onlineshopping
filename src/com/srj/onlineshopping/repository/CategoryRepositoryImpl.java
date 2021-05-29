@@ -34,9 +34,9 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
 
 	@Override
-	public Category get(Long id) {
+	public Category get(int id) {
 		
-		return sessionFactory.getCurrentSession().get(Category.class, Long.valueOf(id));
+		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
 
@@ -46,7 +46,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 	public boolean add(Category category) {
 		
 		try{
-			sessionFactory.getCurrentSession().save(category);
+			sessionFactory.getCurrentSession().persist(category);
 			return true;
 		}catch (Exception e) {
 			e.printStackTrace();

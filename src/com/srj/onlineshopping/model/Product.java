@@ -7,7 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="product")
 public class Product {
@@ -15,7 +16,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="product_id")
-	private Long productId;
+	private int id;
 	
 	@Column(name="code")
 	private String code;
@@ -33,7 +34,7 @@ public class Product {
 	private Double unitPrice;
 	
 	@Column(name="quantity")
-	private Long quantity;
+	private int quantity;
 	
 	@Column(name="is_active")
 	private boolean active;
@@ -41,128 +42,159 @@ public class Product {
 	//@JoinColumn(name="category_id")
 	//private Category category;
 	@Column(name="category_id")
-	private Long categoryId;
+	@JsonIgnore
+	private int categoryId;
 	
 	//@JoinColumn(name="supplier_id")
 	//private Supplier supplier;
 	@Column(name="supplier_id")
-	private Long supplierId;
+	@JsonIgnore
+	private int supplierId;
 	
 	@Column(name="purcheses")
-	private Long purcheses;
+	private int purcheses;
 	
 	@Column(name="views")
-	private Long views;
+	private int views;
 	
-	public Product(){
-		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
-		//it will provide random unique id as soon as the product generated
-	}
+	
+	// default constructor
+		public Product() {
+			
+			this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
+			
+		}
 
-	public Long getProductId() {
-		return productId;
-	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
-	}
+		public int getId() {
+			return id;
+		}
 
-	public String getCode() {
-		return code;
-	}
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+		public void setId(int id) {
+			this.id = id;
+		}
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+		public String getCode() {
+			return code;
+		}
 
-	public String getBrand() {
-		return brand;
-	}
 
-	public void setBrand(String brand) {
-		this.brand = brand;
-	}
+		public void setCode(String code) {
+			this.code = code;
+		}
 
-	public String getDescription() {
-		return description;
-	}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+		public String getName() {
+			return name;
+		}
 
-	public Double getUnitPrice() {
-		return unitPrice;
-	}
 
-	public void setUnitPrice(Double unitPrice) {
-		this.unitPrice = unitPrice;
-	}
+		public void setName(String name) {
+			this.name = name;
+		}
 
-	public Long getQuantity() {
-		return quantity;
-	}
 
-	public void setQuantity(Long quantity) {
-		this.quantity = quantity;
-	}
+		public String getBrand() {
+			return brand;
+		}
 
-	public boolean isActive() {
-		return active;
-	}
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
+		public void setBrand(String brand) {
+			this.brand = brand;
+		}
 
-	public Long getCategoryId() {
-		return categoryId;
-	}
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
+		public String getDescription() {
+			return description;
+		}
 
-	public Long getSupplierId() {
-		return supplierId;
-	}
 
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
-	}
+		public void setDescription(String description) {
+			this.description = description;
+		}
 
-	public Long getPurcheses() {
-		return purcheses;
-	}
 
-	public void setPurcheses(Long purcheses) {
-		this.purcheses = purcheses;
-	}
+		public Double getUnitPrice() {
+			return unitPrice;
+		}
 
-	public Long getViews() {
-		return views;
-	}
 
-	public void setViews(Long views) {
-		this.views = views;
-	}
+		public void setUnitPrice(Double unitPrice) {
+			this.unitPrice = unitPrice;
+		}
 
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", code=" + code + ", name=" + name + ", brand=" + brand
-				+ ", description=" + description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active="
-				+ active + ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purcheses=" + purcheses
-				+ ", views=" + views + "]";
-	}
 
+		public int getQuantity() {
+			return quantity;
+		}
+
+
+		public void setQuantity(int quantity) {
+			this.quantity = quantity;
+		}
+
+
+		public boolean isActive() {
+			return active;
+		}
+
+
+		public void setActive(boolean active) {
+			this.active = active;
+		}
+
+
+		public int getCategoryId() {
+			return categoryId;
+		}
+
+
+		public void setCategoryId(int categoryId) {
+			this.categoryId = categoryId;
+		}
+
+
+		public int getSupplierId() {
+			return supplierId;
+		}
+
+
+		public void setSupplierId(int supplierId) {
+			this.supplierId = supplierId;
+		}
+
+
+		public int getPurcheses() {
+			return purcheses;
+		}
+
+
+		public void setPurcheses(int purcheses) {
+			this.purcheses = purcheses;
+		}
+
+
+		public int getViews() {
+			return views;
+		}
+
+
+		public void setViews(int views) {
+			this.views = views;
+		}
+
+
+		@Override
+		public String toString() {
+			return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
+					+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
+					+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", purcheses=" + purcheses
+					+ ", views=" + views + "]";
+		}
+
+	
 	
 	
 	

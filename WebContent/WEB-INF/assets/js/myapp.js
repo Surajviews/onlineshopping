@@ -57,8 +57,7 @@ $(function() {
 		if (window.categoryId == '') {
 			jsonUrl = window.contextRoot + '/json/data/all/products';
 		} else {
-			jsonUrl = window.contextRoot + '/json/data/category/'
-					+ window.categoryId + '/products';
+			jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId +'/products';
 		}
 
 		$table
@@ -71,7 +70,7 @@ $(function() {
 						url : jsonUrl,
 						dataSrc : ''
 					},
-					columns : [
+						columns : [
 							{
 								data : 'code',
 								bSortable : false,
@@ -150,7 +149,7 @@ $(function() {
 
 	
 	
-	// list of all products for admin
+	/*// list of all products for admin
 	var $productsTable = $('#productsTable');
 	
 	
@@ -332,7 +331,7 @@ $(function() {
 		
 	}
 	
-	/*validating the loginform*/
+	validating the loginform
 	
 	// validating the product form element	
 	// fetch the form element
@@ -376,8 +375,8 @@ $(function() {
 		
 	
 	
-	/*------*/
-	/* for fading out the alert message after 3 seconds */
+	------
+	 for fading out the alert message after 3 seconds 
 	$alert = $('.alert');
 	if($alert.length) {
 		setTimeout(function() {
@@ -386,8 +385,8 @@ $(function() {
 		);		
 	}
 		
-	/*------*/
-	/* handle refresh cart*/	
+	------
+	 handle refresh cart	
 	$('button[name="refreshCart"]').click(function(){
 		var cartLineId = $(this).attr('value');
 		var countField = $('#count_' + cartLineId);
@@ -410,5 +409,5 @@ $(function() {
 				window.location.href = updateUrl;
 			}
 		}
-	});			
+	});	*/		
 });

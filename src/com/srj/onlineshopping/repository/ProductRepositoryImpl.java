@@ -17,10 +17,10 @@ public class ProductRepositoryImpl implements ProductRepository {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public Product get(Long productId) {
+	public Product get(int id) {
 
 		try {
-			return sessionFactory.getCurrentSession().get(Product.class, Long.valueOf(productId));
+			return sessionFactory.getCurrentSession().get(Product.class, Integer.valueOf(id));
 		}
 		catch (Exception ex) {
 			ex.printStackTrace();
@@ -88,7 +88,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public List<Product> listActiveProductByCategory(Long categoryId) {
+	public List<Product> listActiveProductByCategory(int categoryId) {
 
 		String selectActiveProductsByCategory = "FROM product WHERE active=:active AND categoryId=:categoryId";
 		return sessionFactory
@@ -100,15 +100,17 @@ public class ProductRepositoryImpl implements ProductRepository {
 	}
 
 	@Override
-	public List<Product> getLetestActiveProducts(Long count) {
+	public List<Product> getLetestActiveProducts(int count) {
 		
 		return sessionFactory
 				.getCurrentSession()
-					.createQuery("FROM product WHERE active =: active ORDER BY productId",Product.class)
+					.createQuery("FROM product WHERE active =: active ORDER BY id",Product.class)
 						.setParameter("active", true)
 						.setFirstResult(0)
-						.setMaxResults(count.intValue())		//convert the Long into int
+						.setMaxResults(count)		
 								.getResultList();
 	}
+
+	
 
 }

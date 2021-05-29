@@ -31,7 +31,7 @@ public class PageController {
 		
 		mv.addObject("categories",categoryService.list());
 		
-		mv.addObject("userClickHome", true);
+		mv.addObject("userClickHome", true);			//used to call the page through homepage
 		return mv;
 	}
 	
@@ -40,7 +40,7 @@ public class PageController {
 		
 		ModelAndView mv=new ModelAndView("homepage");
 		mv.addObject("title", "About Us");
-		      mv.addObject("userClickAbout", true);
+		      mv.addObject("userClickAbout", true);    //used to call the about page through homepage
 		return mv;
 	}
 	
@@ -69,7 +69,7 @@ public class PageController {
 	}
 	
 	@RequestMapping(value = "/show/category/{id}/products")
-	public ModelAndView showCategoryProducts(@PathVariable("id") Long id){
+	public ModelAndView showCategoryProducts(@PathVariable("id") int id){
 		ModelAndView mv=new ModelAndView("homepage");
 		
 		//categoryDAO to fetch single category
@@ -87,6 +87,49 @@ public class PageController {
 		mv.addObject("userClickCategoryProducts",true);
 		return mv;
 	}
+	
+	
+	@RequestMapping(value="/show/{id}/product")
+	public ModelAndView showSingleCategory(@PathVariable int id){
+		
+		ModelAndView mv=new ModelAndView("homepage");
+		
+		Product product = productService.get(id);
+		
+		//update the view count(how many time product view in website by user)
+		product.setViews(product.getViews()+1);
+		productService.update(product);
+		
+		mv.addObject("title", product.getName());
+		mv.addObject("product", product);
+		
+		mv.addObject("userClickShowProduct", true);
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*@RequestMapping(value="/test")
 	public ModelAndView test(){

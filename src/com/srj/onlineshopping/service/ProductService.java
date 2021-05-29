@@ -7,7 +7,7 @@ import com.srj.onlineshopping.model.Product;
 public interface ProductService {
 
 	
-	Product get(Long productId);
+	Product get(int productId);
 	List<Product> list();
 	boolean add(Product product);
 	boolean update(Product product);
@@ -15,6 +15,6 @@ public interface ProductService {
 	
 	//Bussiness methods
 	List<Product> listActiveProduct();
-	List<Product> listActiveProductByCategory(Long categoryId);
-	List<Product> getLetestActiveProducts(Long count);
+	List<Product> listActiveProductByCategory(int id);
+	List<Product> getLetestActiveProducts(int count);
 }
